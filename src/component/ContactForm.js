@@ -11,12 +11,11 @@ const ContactForm = () => {
         e.preventDefault();
         console.log(name, phoneNumber);
         dispatch({type:"ADD_CONTACT", payload:{name, phoneNumber}});
+        alert("연락처가 추가되었습니다.")
 
         setName("");
         setPhoneNumber("");
     }
-
-
 
     return(
         <div>
@@ -24,12 +23,12 @@ const ContactForm = () => {
             <Form onSubmit={addContact}>
       <Form.Group className="mb-3" controlId="formName">
         <Form.Label>이름</Form.Label>
-        <Form.Control type="text" placeholder="이름을 입력해주세요." onChange={(e)=>setName(e.target.value)} />
+        <Form.Control type="text" placeholder="이름을 입력해주세요." value={name} onChange={(e)=>setName(e.target.value)} />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formContact">
         <Form.Label>연락처</Form.Label>
-        <Form.Control type="number" placeholder="전화번호를 입력해주세요." onChange={(e)=>setPhoneNumber(e.target.value)}/>
+        <Form.Control type="number" placeholder="전화번호를 입력해주세요." value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)}/>
       </Form.Group>
       <Button variant="primary" type="submit">
         추가
